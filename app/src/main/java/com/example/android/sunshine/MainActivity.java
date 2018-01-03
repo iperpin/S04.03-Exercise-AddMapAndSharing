@@ -186,7 +186,10 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(addressUri);
-            startActivity(intent);
+
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
